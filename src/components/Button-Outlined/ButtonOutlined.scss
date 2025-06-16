@@ -1,0 +1,17 @@
+.button-outlined{
+    border: solid 2px var(--orange);
+    background-color: transparent;
+    font-size: 18px;
+    color: var(--orange);
+    padding: 8px 45px 8px 45px;
+    border-radius: 12px;
+    font-weight: 500;
+    &:hover{
+        border: none;
+        color: white;
+        border: solid 2px var(--orange);
+        background-color: var(--orange);
+        font-weight: 500;
+        transition: all 0.9s ease;
+    }
+}

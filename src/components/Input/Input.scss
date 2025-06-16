@@ -1,0 +1,63 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  width: 100%;
+  position: relative;
+
+  p {
+    color: var(--grey);
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
+  }
+
+  &:focus-within p {
+    color: var(--orange-secondary);
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    font-size: 13px;
+    border-radius: 8px;
+    font-weight: 400;
+    border: 1px solid rgb(184, 184, 184);
+    background-color: transparent;
+    color: var(--grey);
+    transition: border-color 0.3s ease, color 0.3s ease;
+
+    &::placeholder {
+      color: #bbb;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--orange-secondary);
+    }
+
+    &:focus::placeholder {
+      color: transparent;
+    }
+
+    &:valid:not(:placeholder-shown),
+    &:invalid:not(:placeholder-shown) {
+      background-repeat: no-repeat;
+      background-position: calc(100% - 10px) center;
+      background-size: 15px;
+    }
+
+    &:invalid:not(:placeholder-shown) {
+      border: 1px solid #ff4949;
+      background-image: url(/src/assets/img/unchecked-mark.png);
+    }
+
+    &:valid:not(:placeholder-shown) {
+      border: 1px solid #24c764;
+      background-image: url(/src/assets/img/checked-mark.png);
+    }
+  }
+}

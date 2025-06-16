@@ -1,0 +1,64 @@
+.Cadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    .logo {
+        width: 150px;
+    }
+
+    h1 {
+        color: var(--orange);
+        font-weight: 700;
+        font-size: 24px;
+    }
+    .inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 300px;
+    }
+    .texts{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: self-start;
+        font-size: 17px;
+        .first{
+            font-weight: 200;
+            color: var(--orange);
+        }
+        .second{
+            font-weight: 500;
+            color: var(--orange);
+        }
+    }
+    .tipo {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+        width: 300px;
+        label {
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--grey);
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            outline: none;
+            color: var(--orange-secondary);
+
+            &:focus {
+                border-color: var(--orange-secondary);
+            }
+        }
+    }
+}
