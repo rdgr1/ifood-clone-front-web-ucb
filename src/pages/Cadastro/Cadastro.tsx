@@ -5,26 +5,50 @@ import ButtonPrimary from '../../components/Button-Primary/ButtonPrimary';
 import api from '../../services/api';
 import './Cadastro.scss';
 import Logo from '../../components/Logo/Logo';
+import { toast } from 'react-toastify';
 
 const Cadastro: React.FC = () => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [tipo, setTipo] = useState('cliente'); // valor padrão
+  const [tipo, setTipo] = useState('cliente');
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
-    try {
-      const res = await api.post('/auth/register', { email, nome, senha, tipo });
-      localStorage.setItem('token', res.data.access_token);
-      if(res.status == 201){
-          navigate("/login")
-      }
+  if (!nome || !email || !senha || !tipo) {
+    return toast.warning("Preencha todos os campos.");
+  }
 
-    } catch (err) {
-      alert('Erro ao cadastrar!');
+  try {
+    const res = await api.post('/auth/register', {
+      email,
+      nome,
+      senha,
+      tipo
+    });
+
+    const token = res.data?.access_token;
+    if ((res.status === 201 || res.status === 200) && token) {
+      console.log("SUCESSO",res);
+      localStorage.setItem('token', token);
+      toast.success("Sua conta foi criada com sucesso! Redirecionando...");
+      setTimeout(() => navigate("/login"), 2000);
+    } else {
+      toast.error("Erro inesperado ao cadastrar.");
     }
-  };
+  } catch (err: any) {
+    const msg = err.response?.data?.message;
+
+    if (err.response?.status === 400 && msg === 'Usuário já existe') {
+      toast.error("Usuário já cadastrado.");
+    } else if (Array.isArray(msg)) {
+      toast.error("Dados inválidos: " + msg.join(", "));
+    } else {
+      toast.error("Erro ao cadastrar. Tente novamente.");
+    }
+    console.error(err);
+  }
+};
 
   return (
     <div className="Cadastro">

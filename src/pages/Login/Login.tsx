@@ -6,48 +6,59 @@ import Input from "../../components/Input/Input";
 import "./Login.scss";
 import ButtonPrimary from "../../components/Button-Primary/ButtonPrimary";
 import ButtonOutlined from "../../components/Button-Outlined/ButtonOutlined";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import Logo from "../../components/Logo/Logo";
 
-type Props = {};
-
-const Login: React.FC<Props> = () => {
+const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
+
   const handleLogin = async () => {
+    if (!email || !senha) {
+      return toast.warning("Preencha todos os campos.");
+    }
+
     try {
       const res = await api.post("/auth/login", { email, senha });
-      localStorage.setItem("token", res.data.access_token);
-      localStorage.setItem("tipo", res.data.tipo)
-      if(res.status == 200){
-        switch(res.data.tipo){
-        case "cliente":
-          toast.success("Login realizado, Bem vindo Cliente")
-          navigate("/cliente")
-          break
-        case "entregador":
-          toast.success("Login realizado, Bem vindo Entregador")
-          navigate("/entregador")
-          break
-        case "loja":
-          toast.success("Login realizado, Bem vindo Lojista")
-          navigate("/loja")
-          break
-        default:
-          navigate("/")
-      }
+      console.log("RESPOSTA DO LOGIN", res);
+      const { access_token, tipo } = res.data;
+
+      if (res.status === 201 || res.status === 200 && access_token && tipo) {
+        localStorage.setItem("token", access_token);
+        localStorage.setItem("tipo", tipo);
+
+        toast.success(`Login realizado com sucesso! Bem-vindo ${tipo}.`);
+
+        switch (tipo) {
+          case "cliente":
+            navigate("/cliente");
+            break;
+          case "entregador":
+            navigate("/entregador");
+            break;
+          case "loja":
+            navigate("/loja");
+            break;
+          default:
+            navigate("/");
+            break;
+        }
+      } else {
+        toast.error("Erro inesperado ao fazer login.");
       }
     } catch (err) {
-      toast.error("Erro, ao efetuar login, Tente Novamente!")
+      toast.error("Erro ao efetuar login. Verifique suas credenciais.");
+      console.error(err);
     }
   };
+
   return (
     <div className="login">
-      <Logo/>
+      <Logo />
       <h1>Bem-vindo!</h1>
       <div className="texts">
-        <p className="first">Faça login com seu e-mail e </p>
+        <p className="first">Faça login com seu e-mail e</p>
         <p className="second">senha para acessar a plataforma.</p>
       </div>
       <div className="inputs">
