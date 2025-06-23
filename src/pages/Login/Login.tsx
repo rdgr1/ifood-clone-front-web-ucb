@@ -22,26 +22,24 @@ const Login: React.FC = () => {
     try {
       const res = await api.post("/auth/login", { email, senha });
       console.log("RESPOSTA DO LOGIN", res);
-      const { access_token, tipo } = res.data;
+      const { access_token, tipo, user } = res.data;
 
-      if (res.status === 201 || res.status === 200 && access_token && tipo) {
+      if (res.status === 201 || (res.status === 200 && access_token && tipo)) {
         localStorage.setItem("token", access_token);
+        localStorage.setItem("id", user.id);
         localStorage.setItem("tipo", tipo);
 
-        toast.success(`Login realizado com sucesso! Bem-vindo ${tipo}.`);
+        toast.success(`Login realizado com sucesso! Bem-vindo.`);
 
         switch (tipo) {
           case "cliente":
-            navigate("/cliente");
-            break;
-          case "entregador":
-            navigate("/entregador");
+            navigate("/cliente/restaurantes");
             break;
           case "loja":
-            navigate("/loja");
+            navigate("/loja/produtos");
             break;
-          default:
-            navigate("/");
+          case "entregador":
+            navigate("/entregador/pedidos");
             break;
         }
       } else {

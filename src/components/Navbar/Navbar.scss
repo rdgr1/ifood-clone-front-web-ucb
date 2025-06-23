@@ -1,0 +1,41 @@
+.navbar {
+  height: 70px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .foto {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .info {
+      p {
+        margin: 0;
+        font-weight: bold;
+      }
+      small {
+        font-size: 12px;
+        color: gray;
+      }
+    }
+  }
+
+  .logout {
+    background-color: transparent;
+    border: none;
+    color: #ff7a00;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}

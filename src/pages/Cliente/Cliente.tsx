@@ -1,16 +1,8 @@
-import type React from 'react';
-import './Cliente.scss';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
-type Props = {
-
+const Cliente: React.FC = () => {
+  return <Outlet />;
 };
-
-const Cliente: React.FC<Props> = () =>{
-    return(
-        <div className="entregador">
-            <h1>Cliente LOGADO</h1>
-        </div>
-    );
-}
 
 export default Cliente;

@@ -1,0 +1,15 @@
+.restaurantes-page {
+  padding: 32px 24px 24px 24px; // 240px do Drawer + 24px de espaço
+  min-height: 100vh;
+
+  h5 {
+    margin-bottom: 24px;
+    color: var(--orange-secondary);
+  }
+
+  .grid-restaurantes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+}

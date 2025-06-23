@@ -1,15 +1,17 @@
 import type React from 'react';
 import './Entregador.scss';
 
+import { Outlet } from 'react-router-dom';
+
 type Props = {
 
 };
 
 const Entregador: React.FC<Props> = () => {
     return(
-        <div className="entregador">
-            <h1>Entregador LOGADO</h1>
-        </div>
+    <main className="conteudo">
+          <Outlet />
+    </main>
     );
 }
 

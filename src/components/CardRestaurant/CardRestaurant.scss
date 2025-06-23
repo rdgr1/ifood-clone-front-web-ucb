@@ -1,0 +1,41 @@
+.card-restaurante {
+  min-width: 275px;
+  height: 100%;
+  background-color: var(--bg-card, #ffffff);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+
+.card-imagem {
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card-conteudo {
+  padding: 16px;
+}
+
+.card-nome {
+  font-weight: 500;
+  text-align: center;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+.card-descricao {
+  color: var(--text-secondary, #666);
+  margin-bottom: 16px;
+}
+
+.card-botao {
+  font-weight: 700;
+  text-transform: none;
+  color: #ffffff;
+}
+}

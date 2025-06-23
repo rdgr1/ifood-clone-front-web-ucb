@@ -1,0 +1,33 @@
+.appbar-custom {
+  background-color: white;
+  color: var(--orange);
+  font-family: 'Inter';
+  
+  .typography-custom {
+    font-weight: 300;
+  }
+}
+
+.drawer-custom {
+  .MuiListItem-root {
+    margin-bottom: 8px;
+
+    .MuiListItemButton-root {
+      border-radius: 8px;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: #eee;
+      }
+
+      &.active {
+        background-color: #1976d2;
+        color: #fff;
+
+        .MuiListItemIcon-root {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

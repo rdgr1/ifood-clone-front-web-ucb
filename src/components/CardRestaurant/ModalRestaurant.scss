@@ -1,0 +1,50 @@
+.modal-restaurante {
+  .modal-title {
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--orange);
+  }
+
+  .modal-content {
+    padding: 16px;
+
+    .modal-descricao {
+      font-family: 'Inter';
+      font-size: 14px;
+      color: var(--grey);
+      margin-bottom: 16px;
+    }
+
+    .modal-produtos {
+      .produto-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .produto-info {
+          span:first-child {
+            font-weight: 500;
+            font-size: 16px;
+          }
+
+          span:last-child {
+            font-size: 14px;
+            color: var(--grey);
+          }
+        }
+
+        .btn-add {
+          border-color: var(--orange);
+          color: var(--orange);
+          text-transform: none;
+
+          &:hover {
+            background-color: var(--orange);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

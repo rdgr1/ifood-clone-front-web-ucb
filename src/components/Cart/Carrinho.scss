@@ -1,0 +1,47 @@
+.carrinho-container {
+  padding: 16px;
+
+  .carrinho-titulo {
+    font-family: 'Inter';
+    color: var(--orange);
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  .carrinho-lista {
+    margin-top: 8px;
+
+    .carrinho-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .produto-info {
+        span:first-child {
+          font-weight: 500;
+        }
+      }
+
+      .btn-remove {
+        color: var(--dark-orange);
+      }
+    }
+  }
+
+  .carrinho-total {
+    font-weight: bold;
+    margin-top: 12px;
+    color: var(--orange-secondary);
+  }
+
+  .carrinho-botoes {
+    margin-top: 16px;
+    display: flex;
+    gap: 15px;
+    .finalizar{
+        color: white;
+        font-weight: 700;
+        
+    }
+  }
+}
